@@ -1,6 +1,6 @@
 //if (Meteor.isClient) {
 
-Template.hello.greeting = function () {
+/*Template.hello.greeting = function () {
   return "Welcome to lemur.";
 };
 
@@ -10,4 +10,4 @@ Template.hello.events({
     if (typeof console !== 'undefined')
       console.log("You pressed the button");
   }
-});
+});*/

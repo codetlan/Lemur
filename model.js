@@ -16,7 +16,5 @@
 //Equipos
 
 Clubs = new Meteor.Collection("clubs");
-
 Matches = new Meteor.Collection("matches");
-
 Prices = new Meteor.Collection("Prices");

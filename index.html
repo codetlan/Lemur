@@ -1,7 +1,3 @@
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-
 <head>
 	<meta charset="utf-8" />
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
@@ -10,73 +6,91 @@
 	<meta name="viewport" content="width=device-width">
   <title>Lemur</title>
 	<meta name="robots" content="noindex, nofollow">
-	<meta name="description" content="LEmur : Super quinielas Facebook." />
+	<meta name="description" content="Lemur : Super quinielas Facebook." />
 	<meta name="keywords" content=" futbol, soccer, quinielas, quinielas facebook" />
 	<meta name="author" content="Codetlan by Armando Gonzalez"/>
 </head>
 
 <body>
-	<!--[if lt IE 7]>
-   <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-   <![endif]-->
-
-   <!-- Header
-   ================================================== -->
-  {{> toolbar}}
-
- <div class="container-fluid">
-      <div class="row-fluid">
-		<ul class="thumbnails">
-			<li class="span12">
-		    	<a href="#" class="thumbnail">
-		         	<img src="https://asset1.basecamp.com/2032407/projects/1384395-lemur/attachments/16799417/e27c93a35a20d17d17f66b3c78686a8d679327f4/large.png" alt="">
-		        </a>
-		    </li>
-			              
-		</ul>
-      </div>
-   </div>
+   {{> toolbar}} 
+   {{> container}} 
 </body>
+
 <!-- Templates area-->
+<!--  ====================== NAVBAR ============================ --> 
 <template name="toolbar">
-	<header id="nav-bar" class="container-fluid">
-      <div class="row-fluid  win-ui-dark ">
-         <div class="span8 align-left">
-              <a class="win-command win-commandlayout">
-                  <span class="win-commandimage win-commandring">&#x0021;</span>
-                  <span class="win-label">Home</span>
-               </a>
-               <hr class="win-command" />
-               <a class="win-command">
-                  <span class="win-commandimage win-commandring">&#xe15e;</span>
-                  <span class="win-label">Users</span>
-               </a>
-			   <a class="win-command">
-                  <span class="win-commandimage win-commandring">&#xe1fb;</span>
-                  <span class="win-label">Clubs</span>
-               </a>
-			   <a class="win-command">
-                  <span class="win-commandimage win-commandring">&#xe1d4;</span>
-                  <span class="win-label">Matches</span>
-               </a>
-			   <a class="win-command">
-                  <span class="win-commandimage win-commandring">&#xe146;</span>
-                  <span class="win-label">Prices</span>
-               </a>
-			
+	<div class="container navbar-wrapper">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Lemur</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
+            <ul class="nav">
+               <li class="active"><a href="#users-list" data-toggle="tab">Users</a></li>
+               <li ><a href="#clubs-list" data-toggle="tab" >Clubs</a></li>
+               <li ><a href="#matches-list" data-toggle="tab">Matches</a></li>
+               <li ><a href="#prices-list" data-toggle="tab">Prices</a></li>              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!-- /.navbar-inner -->
+      </div><!-- /.navbar -->
+    </div><!-- /.container -->
+</template>   
+<!--  ====================== CONTAINER ============================ -->
+<template name="container">
+   <div class="container">
+     <div class="tab-content">
+         <div class="tab-pane fade active in" id="users-list">
+            {{#each users}}
+               {{> user}}
+            {{/each}} 
          </div>
-         <div id="top-info" class="pull-right">
-         <a href="#" class="pull-left">
-            <div class="top-info-block">
-                {{loginButtons align="right"}}
-            </div>            
-         </a>
-         <hr class="separator pull-left"/>
-         <a id="settings" class="pull-left" href="#">
-            <b class="icon-settings"></b>
-         </a>
+         <div class="tab-pane fade" id="clubs-list">
+            {{#each clubs}}
+               {{> club}}
+            {{/each}} 
+         </div>
+         <div class="tab-pane fade" id="matches-list">
+            {{#each matches}}
+               {{> match}}
+            {{/each}} 
+         </div>
+         <div class="tab-pane fade" id="prices-list">
+            {{#each prices}}
+               {{> price}}
+            {{/each}} 
+         </div>
       </div>
-   </div>
-   </header>
+   </div> <!-- /container -->
+</template>
+<!--  ====================== USERS ============================ -->
+<template name="user">
+  <div class="item {{selected}}">
+    <span class="name">usuario</span>
+    <span class="name">{{name}}</span>
+  </div>
+</template>
+<!--  ====================== CLUBS ============================ -->
+<template name="club">
+  <div class="item {{selected}}">
+      <span class="name">{{name}}</span>
+  </div>
+</template>
+<!--  ====================== MATCHES ============================ -->
+<template name="match">
+  <div class="item {{selected}}">
+      <span class="name">{{local}} vs {{visitor}} {{hour}}</span>
+  </div>
+</template>
+<!--  ====================== PRICES ============================ -->
+<template name="price">
+  <div class="item {{selected}}">
+      <span class="name">{{name}} ${{price}}</span>
+  </div>
 </template>
 

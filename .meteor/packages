@@ -7,3 +7,5 @@ autopublish
 preserve-inputs
 accounts-facebook
 accounts-ui
+bootstrap
+insecure

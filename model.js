@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Armando Gonzalez <iam@armando.mx>
  *
  * The models behavior of lemur app
- * 	-Usuarios
+ *	-Usuarios
 	-Equipos
 	-Partidos o fechas
 	-Resultados
@@ -14,7 +14,7 @@
  */
 
 //Equipos
-
-Clubs = new Meteor.Collection("clubs");
-Matches = new Meteor.Collection("matches");
-Prices = new Meteor.Collection("Prices");
+//var Users = new Meteor.Collection("users");
+var Clubs = new Meteor.Collection("clubs");
+var Matches = new Meteor.Collection("matches");
+var Prices = new Meteor.Collection("Prices");

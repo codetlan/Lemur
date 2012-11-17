@@ -1,4 +1,4 @@
-Template.toolbar.events({   
+Template.toolbar.events({
   /**
    * Whe the user clicks on a menu option
    * @param  {Object} e   The event object
@@ -6,8 +6,8 @@ Template.toolbar.events({
    * @return {Boolean}     always true
    */
   'click li' : function (e,obj) {
-	e.preventDefault();
-	$(this).tab('show');
+      e.preventDefault();
+      $(this).tab('show');
   }
 });
 

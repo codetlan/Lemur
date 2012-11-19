@@ -18,4 +18,4 @@
 var Clubs = new Meteor.Collection("clubs");
 var Matches = new Meteor.Collection("matches");
 var Prices = new Meteor.Collection("Prices");
-var asdasd;
+var Torneo = new Meteor.Collection("tournament");

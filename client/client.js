@@ -23,3 +23,9 @@ Template.container.matches = function() {
 Template.container.prices = function() {
 	return Prices.find({}, {sort: {score: -1, name: 1}});
 };
+
+Template.clubForm.events({
+  'click button' :function() {
+    
+  }
+});

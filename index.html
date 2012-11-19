@@ -45,15 +45,22 @@
 <template name="container">
    <div class="container">
      <div class="tab-content">
-         <div class="tab-pane fade active in" id="users-list">
+         <div class="tab-pane fade " id="users-list">
             {{#each users}}
                {{> user}}
             {{/each}} 
          </div>
-         <div class="tab-pane fade" id="clubs-list">
-            {{#each clubs}}
+         <div class="tab-pane fade active in" id="clubs-list">
+           <div class ="row">
+             <div class="span4">
+               {{> clubForm}}
+             </div>
+             <div class="span8">
+              {{#each clubs}}
                {{> club}}
-            {{/each}} 
+              {{/each}} 
+             </div>
+           </div>           
          </div>
          <div class="tab-pane fade" id="matches-list">
             {{#each matches}}
@@ -92,5 +99,45 @@
   <div class="item {{selected}}">
       <span class="name">{{name}} ${{price}}</span>
   </div>
+</template>
+
+<!-- ====================== FORM USERS ========================= -->
+<template name="userForm">
+  <form class="form-horizontal">    
+    <input type="text" class="input-large" placeholder="Add framework">
+    <button type="submit" class="btn btn-primary">Add Framework</button>    
+  </form>
+</template>
+<!-- ====================== FORM CLUBS ========================= -->
+<template name="clubForm">
+  <h4>Clubs</h4>
+  <form class="form-horizontal">
+    <div class="control-group">
+      <input type="text" class="input-large" placeholder="Nombre">
+    </div>
+    <div class="control-group">
+      <input type="text" class="input-large" placeholder="Liga">
+    </div>
+    <div class="control-group">
+      <input type="text" class="input-large" placeholder="Logo">
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-primary">Add Club</button>
+    </div>
+  </form>
+</template>
+<!-- ====================== FORM MATCHES ========================= -->
+<template name="addMatches">
+  <form class="form-inline">
+      <input  type="text" class="input-large" placeholder="Add framework">
+      <button type="submit" class="btn btn-primary">Add Framework</button>
+  </form>
+</template>
+<!-- ====================== FORM PRICES ========================= -->
+<template name="addPrices">
+  <form class="form-inline">
+      <input  type="text" class="input-large" placeholder="Add framework">
+      <button type="submit" class="btn btn-primary">Add Framework</button>
+  </form>
 </template>
 

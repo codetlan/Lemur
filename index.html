@@ -31,10 +31,11 @@
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
             <ul class="nav">
-               <li class="active"><a href="#users-list" data-toggle="tab">Users</a></li>
-               <li ><a href="#clubs-list" data-toggle="tab" >Clubs</a></li>
-               <li ><a href="#matches-list" data-toggle="tab">Matches</a></li>
-               <li ><a href="#prices-list" data-toggle="tab">Prices</a></li>              
+               <li class="active"><a href="#users-list" data-toggle="tab">Usuarios</a></li>
+               <li ><a href="#clubs-list" data-toggle="tab" >Equipos</a></li>
+               <li ><a href="#matches-list" data-toggle="tab">Partidos</a></li>
+               <li ><a href="#prices-list" data-toggle="tab">Premios</a></li>              
+               <li ><a href="#tournament-list" data-toggle="tab">Torneos</a></li>              
             </ul>
           </div><!--/.nav-collapse -->
         </div><!-- /.navbar-inner -->
@@ -45,20 +46,31 @@
 <template name="container">
    <div class="container">
      <div class="tab-content">
-         <div class="tab-pane fade " id="users-list">
+         <div class="tab-pane fade active in" id="users-list">
             {{#each users}}
                {{> user}}
             {{/each}} 
          </div>
-         <div class="tab-pane fade active in" id="clubs-list">
+         <div class="tab-pane fade" id="clubs-list">
            <div class ="row">
              <div class="span4">
                {{> clubForm}}
              </div>
              <div class="span8">
-              {{#each clubs}}
-               {{> club}}
-              {{/each}} 
+               <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Torneo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each clubs}}
+                    {{> club}}
+                  {{/each}} 
+                </tbody>
+              </table>              
              </div>
            </div>           
          </div>
@@ -71,6 +83,29 @@
             {{#each prices}}
                {{> price}}
             {{/each}} 
+         </div> 
+         <div class="tab-pane fade" id="tournament-list">
+          <div class ="row">
+             <div class="span4">
+               {{> tournamentForm}}
+             </div>
+             <div class="span8">
+               <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each tournaments}}
+                    {{> tournament}}
+                  {{/each}} 
+                </tbody>
+              </table>              
+             </div>
+           </div> 
          </div>
       </div>
    </div> <!-- /container -->
@@ -84,9 +119,12 @@
 </template>
 <!--  ====================== CLUBS ============================ -->
 <template name="club">
-  <div class="item {{selected}}">
-      <span class="name">{{name}}</span>
-  </div>
+  <tr>      
+      <td><img src="{{logo}}" class="img-polaroid"></td>
+      <td>{{nombre}}</td>
+      <td>{{torneo}}</td>
+      <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+  </tr>
 </template>
 <!--  ====================== MATCHES ============================ -->
 <template name="match">
@@ -100,6 +138,14 @@
       <span class="name">{{name}} ${{price}}</span>
   </div>
 </template>
+<!--  ====================== TOURNAMENTS ============================ -->
+<template name="tournament">
+  <tr>      
+      <td><img src="{{logo}}" class="img-polaroid"></td>
+      <td>{{nombre}}</td>
+      <td>{{descripcion}}</td>
+  </tr>
+</template>
 
 <!-- ====================== FORM USERS ========================= -->
 <template name="userForm">
@@ -110,19 +156,22 @@
 </template>
 <!-- ====================== FORM CLUBS ========================= -->
 <template name="clubForm">
-  <h4>Clubs</h4>
-  <form class="form-horizontal">
+  <h4>Equipos</h4>
+  <form class="form-horizontal" id="clubForm">
     <div class="control-group">
-      <input type="text" class="input-large" placeholder="Nombre">
+      <input type="text" class="input-large" name="nombre" placeholder="Nombre">
     </div>
     <div class="control-group">
-      <input type="text" class="input-large" placeholder="Liga">
+      {{>comboTournaments}}
+    </div>
+    <div class="control-group well" style="max-width: 180px;">
+      <div class="attachments" id="logobtn">
+        Click para subir logo!
+        <input style="visibility: collapse; width: 0px;" type="file" id="logoFile"> 
+      </div>
     </div>
     <div class="control-group">
-      <input type="text" class="input-large" placeholder="Logo">
-    </div>
-    <div class="control-group">
-      <button type="submit" class="btn btn-primary">Add Club</button>
+      <button type="submit" class="btn btn-primary btn-large">Agregar Equipo</button>
     </div>
   </form>
 </template>
@@ -139,5 +188,34 @@
       <input  type="text" class="input-large" placeholder="Add framework">
       <button type="submit" class="btn btn-primary">Add Framework</button>
   </form>
+</template>
+<!-- ====================== FORM TOURNAMENTS ========================= -->
+<template name="tournamentForm">
+  <h4>Torneos</h4>
+  <form class="form-horizontal" id="tournamentForm">
+    <div class="control-group">
+      <input type="text" class="input-large" name="nombre" placeholder="Nombre">
+    </div>
+    <div class="control-group">
+      <textarea  rows="3" class="input-large" name="descripcion" placeholder="Descripción"></textarea>
+    </div>
+    <div class="control-group well" style="max-width: 180px;">
+      <div class="attachments" id="t-logobtn">
+        Click para subir logo!
+        <input style="visibility: collapse; width: 0px;" type="file" id="t-logoFile"> 
+      </div>
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-primary btn-large">Agregar Torneo</button>
+    </div>
+  </form>
+</template>
+<!-- ====================== COMBO TOURNAMENTS ========================= -->
+<template name="comboTournaments">
+  <select class="input-large" name="torneo" placeholder="Torneo">
+    {{#each tournaments}}
+      <option>{{nombre}}</option>
+    {{/each}}
+  </select>
 </template>
 

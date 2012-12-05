@@ -1,0 +1,21 @@
+<!-- ====================== FORM CLUBS ========================= -->
+<template name="clubForm">
+  <h4>Equipos</h4>
+  <form class="form-horizontal" id="clubForm">
+    <div class="control-group">
+      <input type="text" class="input-large" name="nombre" placeholder="Nombre">
+    </div>
+    <div class="control-group">
+      {{>comboTournaments}}
+    </div>
+    <div class="control-group well" style="max-width: 180px;">
+      <div class="attachments" id="logobtn">
+        Click para subir logo!
+        <input style="visibility: collapse; width: 0px;" type="file" id="logoFile"> 
+      </div>
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-primary btn-large">Agregar Equipo</button>
+    </div>
+  </form>
+</template>

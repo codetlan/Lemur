@@ -1,0 +1,21 @@
+<!-- ====================== FORM TOURNAMENTS ========================= -->
+<template name="tournamentForm">
+  <h4>Torneos</h4>
+  <form class="form-horizontal" id="tournamentForm">
+    <div class="control-group">
+      <input type="text" class="input-large" name="nombre" placeholder="Nombre">
+    </div>
+    <div class="control-group">
+      <textarea  rows="3" class="input-large" name="descripcion" placeholder="Descripción"></textarea>
+    </div>
+    <div class="control-group well" style="max-width: 180px;">
+      <div class="attachments" id="t-logobtn">
+        Click para subir logo!
+        <input style="visibility: collapse; width: 0px;" type="file" id="t-logoFile"> 
+      </div>
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-primary btn-large">Agregar Torneo</button>
+    </div>
+  </form>
+</template>

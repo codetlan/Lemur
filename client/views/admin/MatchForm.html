@@ -1,0 +1,17 @@
+<!-- ====================== FORM MATCHES ========================= -->
+<template name="matchForm">
+  <form class="form-inline" id="matchesForm">
+    Torneo : {{>comboTournaments}}
+    <input type="text" class="input-large" placeholder="Jornada">
+    <select class="input-large" name="local">
+      {{>comboClubs}}  
+    </select>
+    <label>
+      VS
+    </label>
+    <select class="input-large" name="visitante">
+      {{>comboClubs}}  
+    </select>
+    <button type="submit" class="btn btn-primary">Guardar Partido</button>
+  </form>
+</template>

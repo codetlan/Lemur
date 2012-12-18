@@ -12,18 +12,18 @@ Template.toolbar.events({
 });
 
 Template.container.users = function() {
-	//return Users.find({}, {sort: {score: -1, name: 1}});
+	return Meteor.users.find({}, {sort: {score: -1, name: 1}});
 };
-Template.container.clubs = function() {
+Template.clubsView.clubs = function() {
 	return Clubs.find({}, {sort: {score: -1, name: 1}});
 };
-Template.container.matches = function() {
+Template.matchesView.matches = function() {
 	return Matches.find({}, {sort: {score: -1, name: 1}});
 };
-Template.container.prices = function() {
+Template.pricesView.prices = function() {
 	return Prices.find({}, {sort: {score: -1, name: 1}});
 };
-Template.container.tournaments = function() {
+Template.tournamentsView.tournaments = function() {
   return Tournaments.find({}, {sort: {score: -1, name: 1}});
 };
 

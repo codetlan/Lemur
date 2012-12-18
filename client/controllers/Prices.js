@@ -1,4 +1,4 @@
-Template.pricesForm.events({
+Template.priceForm.events({
   'click button' :function(e) {
     e.preventDefault();
     var obj = u.getFormValues('pricesForm');

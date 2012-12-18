@@ -1,155 +1,62 @@
 <head>
 	<meta charset="utf-8" />
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<!-- Mobile viewport optimized: h5bp.com/viewport -->
-	<meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width">
   <title>Lemur</title>
-	<meta name="robots" content="noindex, nofollow">
-	<meta name="description" content="Lemur : Super quinielas Facebook." />
-	<meta name="keywords" content=" futbol, soccer, quinielas, quinielas facebook" />
-	<meta name="author" content="Codetlan by Armando Gonzalez"/>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Lemur : Super quinielas Facebook." />
+  <meta name="keywords" content=" futbol, soccer, quinielas, quinielas facebook" />
+  <meta name="author" content="Codetlan by Armando Gonzalez"/>
 </head>
 
 <body>
-   {{> toolbar}} 
-   {{> container}} 
+ {{> toolbar}} 
+ {{> container}} 
 </body>
 
 <!-- Templates area-->
-<!--  ====================== NAVBAR ============================ --> 
+<!--  ====================== TOOLBAR ============================ --> 
 <template name="toolbar">
 	<div class="container navbar-wrapper">
-      <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Lemur</a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
-            <ul class="nav">
-               <li class="active"><a href="#users-list" data-toggle="tab">Usuarios</a></li>
-               <li ><a href="#clubs-list" data-toggle="tab" >Equipos</a></li>
-               <li ><a href="#matches-list" data-toggle="tab">Partidos</a></li>
-               <li ><a href="#prices-list" data-toggle="tab">Premios</a></li>              
-               <li ><a href="#tournament-list" data-toggle="tab">Torneos</a></li>              
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!-- /.navbar-inner -->
-      </div><!-- /.navbar -->
-    </div><!-- /.container -->
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Lemur</a>
+        <div class="nav-collapse collapse">
+          <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
+          <ul class="nav">
+           <li class="active"><a href="#users-list" data-toggle="tab">Usuarios</a></li>
+           <li ><a href="#clubs-list" data-toggle="tab" >Equipos</a></li>
+           <li ><a href="#matches-list" data-toggle="tab">Partidos</a></li>
+           <li ><a href="#prices-list" data-toggle="tab">Premios</a></li>              
+           <li ><a href="#tournament-list" data-toggle="tab">Torneos</a></li>              
+         </ul>
+       </div><!--/.nav-collapse -->
+     </div><!-- /.navbar-inner -->
+   </div><!-- /.navbar -->
+ </div><!-- /.container -->
 </template>   
 <!--  ====================== CONTAINER ============================ -->
 <template name="container">
-   <div class="container">
-     <div class="tab-content">
-         <div class="tab-pane fade active in" id="users-list">
-            {{#each users}}
-               {{> user}}
-            {{/each}} 
-         </div>
-         <div class="tab-pane fade" id="clubs-list">
-           <div class ="row">
-             <div class="span4">
-               {{> clubForm}}
-             </div>
-             <div class="span8">
-               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Logo</th>
-                    <th>Nombre</th>
-                    <th>Torneo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each clubs}}
-                    {{> club}}
-                  {{/each}} 
-                </tbody>
-              </table>              
-             </div>
-           </div>           
-         </div>
-         <div class="tab-pane fade" id="matches-list">
-            <div class="row">
-              <div class="span12">
-                {{>matchForm}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="span12">
-                <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Local</th>
-                    <th>Visitante</th>
-                    <th>Torneo</th>
-                    <th>Fecha</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each matches}}
-                    {{> match}}
-                  {{/each}} 
-                </tbody>
-              </table>             
-              </div>
-            </div>
-         </div>
-         <div class="tab-pane fade" id="prices-list">
-           <div class ="row">
-             <div class="span4">
-               {{> priceForm}}
-             </div>
-             <div class="span8">
-               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Logo</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Valor</th>
-                    <th>Precio</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each prices}}
-                    {{> price}}
-                  {{/each}} 
-                </tbody>
-              </table>              
-             </div>
-           </div>  
-         </div> 
-         <div class="tab-pane fade" id="tournament-list">
-          <div class ="row">
-             <div class="span4">
-               {{> tournamentForm}}
-             </div>
-             <div class="span8">
-               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Logo</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#each tournaments}}
-                    {{> tournament}}
-                  {{/each}} 
-                </tbody>
-              </table>              
-             </div>
-           </div> 
-         </div>
-      </div>
-   </div> <!-- /container -->
+ <div class="container">
+   <div class="tab-content">
+     <div class="tab-pane fade active in" id="users-list">
+      {{#each users}}
+      {{> user}}
+      {{/each}} 
+    </div>
+    {{>clubsView}}
+    {{>matchesView}}
+    {{>pricesView}}
+    {{>tournamentsView}}
+</div>
+</div> <!-- /container -->
 </template>
 
 

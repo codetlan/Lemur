@@ -1,4 +1,4 @@
-Template.matchesForm.events({
+Template.matchForm.events({
   'click button' :function(e) {
     e.preventDefault();
     var obj = u.getFormValues('matchesForm');

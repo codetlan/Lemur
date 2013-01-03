@@ -19,42 +19,77 @@
 <!-- Templates area-->
 <!--  ====================== TOOLBAR ============================ --> 
 <template name="toolbar">
-	<div class="container navbar-wrapper">
-    <div class="navbar navbar-inverse">
-      <div class="navbar-inner">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">Lemur</a>
-        <div class="nav-collapse collapse">
-          <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="toolbar">
+          <a class="brand" href="#">Lemur</a>
+          {{#if currentUser}}
           <ul class="nav">
            <li class="active"><a href="#users-list" data-toggle="tab">Usuarios</a></li>
            <li ><a href="#clubs-list" data-toggle="tab" >Equipos</a></li>
            <li ><a href="#matches-list" data-toggle="tab">Partidos</a></li>
-           <li ><a href="#prices-list" data-toggle="tab">Premios</a></li>              
-           <li ><a href="#tournament-list" data-toggle="tab">Torneos</a></li>              
+           <li ><a href="#prices-list" data-toggle="tab">Premios</a></li>     
+           <li ><a href="#tournament-list" data-toggle="tab">Torneos</a></li>
          </ul>
-       </div><!--/.nav-collapse -->
-     </div><!-- /.navbar-inner -->
-   </div><!-- /.navbar -->
- </div><!-- /.container -->
-</template>   
+         {{/if}}
+          <ul class="nav pull-right">
+            {{>user_info}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- user info -->
+<template name="user_info">
+  {{#if currentUser}}
+    {{> user_loggedin}}    
+  {{else}}
+    {{> user_loggedout}}
+  {{/if}}
+</template>
+
+<template name="user_loggedin">
+  {{#if loggingIn}}
+  <li>
+    Iniciando sesion...
+  </li>
+  {{else}}
+  <li>
+    <img src="{{currentUser.profile.picture_url}}" style="height:32px; margin-top:8px" class="img-circle">
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      {{currentUser.profile.name}}
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a>Account Settings</a></li>
+      <li class="divider"></li>
+      <li><a id="logout">Logout</a></li>
+    </ul>
+  </li>
+  {{/if}}
+</template>
+<template name="user_loggedout">
+<li><a id="login">Login with Facebook</a></li>
+</template>  
 <!--  ====================== CONTAINER ============================ -->
 <template name="container">
  <div class="container">
    <div class="tab-content">
+    {{#if currentUser}}
      <div class="tab-pane fade active in" id="users-list">
       {{#each users}}
-      {{> user}}
+        {{> user}}
       {{/each}} 
     </div>
     {{>clubsView}}
     {{>matchesView}}
     {{>pricesView}}
     {{>tournamentsView}}
+    {{/if}}
 </div>
 </div> <!-- /container -->
 </template>

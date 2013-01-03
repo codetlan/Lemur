@@ -1,3 +1,30 @@
+Template.user_loggedout.events({
+  "click #login":function (e,tpl) {
+    Meteor.loginWithFacebook({
+      requestPermisions:['email','user_about_me','profile','user_likes']
+    },function(err){
+      if (err) {
+          //handling login error
+        } else{
+          //show alert
+        }
+      });
+  }
+});
+
+Template.user_loggedin.events({
+  "click #logout":function (e,tpl) {
+    Meteor.logout(function(err){
+      if (err) {
+          //handling login error
+        } else{
+          //show alert
+        }
+      });
+  }
+});
+
+
 Template.toolbar.events({
   /**
    * Whe the user clicks on a menu option
@@ -5,9 +32,9 @@ Template.toolbar.events({
    * @param  {Object} obj the node object action
    * @return {Boolean}     always true
    */
-  'click li' : function (e,obj) {
-      e.preventDefault();
-      $(this).tab('show');
+   'click li' : function (e,obj) {
+    e.preventDefault();
+    $(this).tab('show');
   }
 });
 

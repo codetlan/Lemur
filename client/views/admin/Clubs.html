@@ -1,0 +1,25 @@
+<template name="clubsView">   
+  <div class="tab-pane fade" id="clubs-list">
+      <div class ="row">
+       <div class="span4">
+         {{> clubForm}}
+       </div>
+       <div class="span8">
+         <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre</th>
+              <th>Torneo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each clubs}}
+            {{> club}}
+            {{/each}} 
+          </tbody>
+        </table>              
+      </div>
+    </div>
+  </div>
+</template>

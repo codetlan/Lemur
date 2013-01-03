@@ -1,0 +1,28 @@
+<template name="matchesView">
+  <div class="tab-pane fade" id="matches-list">
+    <div class="row">
+      <div class="span12">
+        {{>matchForm}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Local</th>
+              <th>Visitante</th>
+              <th>Torneo</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each matches}}
+            {{> match}}
+            {{/each}} 
+          </tbody>
+        </table>             
+      </div>
+    </div>
+  </div>
+</template>
